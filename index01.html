@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>英雄联盟</title>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	font-size: 12px;
+	line-height: 1.7;
+
+}
+h1{
+	background: white;
+	text-align: center;
+	line-height: 80px;
+}
+li{
+	list-style: none;
+}
+#content{
+	width: 980px;
+	margin: 0 auto;
+	
+
+
+}
+#content li{
+	text-align: center;
+
+}
+
+h2{
+	color: black;
+	font-size: 40px;
+	text-align: center;
+	background: #0088bb;
+
+}
+#menu{
+	position: fixed;
+	left: 50%;
+	margin-left: 490px;
+	top: 200px;
+}
+#menu li a{
+	display: block;
+	text-decoration: none;
+	height: 50px;
+	width: 80px;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+	margin: 5px 0;
+	color: #333;
+	line-height: 50px;
+
+
+}
+#menu li a:hover,#menu li a.current{
+	color: #fff;
+	background: #0088bb;
+}
+
+</style>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+            $(window).scroll(function () {
+                var items = $("#content").find(".item");
+                var menu = $("#menu");
+                var top = $(document).scrollTop();
+
+                var currentId = ""; //滚动条现在所在位置的item id
+                items.each(function () {
+                    var m = $(this);
+                    //注意：m.offset().top代表每一个item的顶部位置
+                    var itemTop = m.offset().top;
+                    if (top > m.offset().top - 300) {
+                        currentId = "#" + m.attr("id");
+                        
+                    } else {
+                        return false;
+                    }
+                });
+
+                var currentLink = menu.find(".current");
+               
+                if (currentId && currentLink.attr("href") != currentId) {
+
+                    currentLink.removeClass("current");
+
+                    menu.find("[href=" + currentId + "]").addClass("current");
+                    console.log(currentLink.attr("href"));
+
+                }
+
+            });
+        });
+	
+
+</script>
+</head>
+<body>
+<div id="menu">
+	<ul>
+		<li><a href="#item1" class="current">上单</a></li>
+		<li><a href="#item2">中单</a></li>
+		<li><a href="#item3">打野</a></li>
+		<li><a href="#item4">ADC</a></li>
+		<li><a href="#item5">辅助</a></li>
+	</ul>
+</div>
+<div id="content">
+	<h1>皮肤展示</h1>
+	<div id="item1" class="item">
+		<h2>上单</h2>
+		<ul>
+			<li><a href=""><img src="image/top01.jpg"></a></li>
+			<li><a href=""><img src="image/top02.jpg"></a></li>
+			
+
+		</ul>
+	</div>
+	<div id="item2"class="item">
+		<h2>中单</h2>
+		<ul>
+			<li><a href=""><img src="image/mid01.jpg"></a></li>
+			<li><a href=""><img src="image/mid02.jpg"></a></li>
+			
+		</ul>
+	</div>
+	<div id="item3"class="item">
+		<h2>打野</h2>
+		<ul>
+			<li><a href=""><img src="image/jg01.jpg"></a></li>
+			<li><a href=""><img src="image/jg02.jpg"></a></li>
+			
+		</ul>
+	</div>
+	<div id="item4"class="item">
+		<h2>ADC</h2>
+		<ul>
+			<li><a href=""><img src="image/adc01.jpg"></a></li>
+			<li><a href=""><img src="image/adc02.jpg"></a></li>
+			
+
+		</ul>
+	</div>
+	<div id="item5"class="item">
+		<h2>辅助</h2>
+		<ul>
+			<li><a href=""><img src="image/sup01.jpg"></a></li>
+			<li><a href=""><img src="image/sup02.jpg"></a></li>
+			
+		</ul>
+	</div>
+</div>
+</body>
+</html>
